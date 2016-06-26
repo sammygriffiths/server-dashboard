@@ -1,0 +1,12 @@
+{
+    "ip": "86.4.80.30",
+    "services": {
+        "plex": {
+            "ip": "",
+            "port": "24412"
+        }
+    },
+    "modules": {
+        "service-availability": true
+    }
+}
