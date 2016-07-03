@@ -1,10 +1,10 @@
 <?php 
 
-namespace Sammy\Server;
+namespace Griff\Server\ServiceStatus\Models;
 
 use JJG\Ping;
 
-class ServiceStatusModel extends CoreModuleModel
+class ServiceStatusModel extends \Griff\Server\CoreModuleModel
 {
 
     private $ping;

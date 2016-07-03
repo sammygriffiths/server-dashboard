@@ -1,8 +1,6 @@
 <?php 
 
-namespace Sammy\Server;
-
-use Symfony\Component\HttpFoundation\Request;
+namespace Griff\Server;
 
 class CoreModel
 {

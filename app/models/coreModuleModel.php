@@ -1,6 +1,6 @@
 <?php 
 
-namespace Sammy\Server;
+namespace Griff\Server;
 
 class CoreModuleModel
 {

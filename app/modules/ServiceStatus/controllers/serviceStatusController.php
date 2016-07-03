@@ -1,8 +1,8 @@
 <?php 
 
-namespace Sammy\Server;
+namespace Griff\Server\ServiceStatus\Controllers;
 
-class ServiceStatusController extends CoreModuleController
+class ServiceStatusController extends \Griff\Server\CoreModuleController
 {
 
     private $model;
@@ -10,7 +10,7 @@ class ServiceStatusController extends CoreModuleController
 
     public function __construct() {
         parent::__construct();
-        $this->model = new ServiceStatusModel;
+        $this->model = new \Griff\Server\ServiceStatus\Models\ServiceStatusModel;
         $this->statuses = $this->model->getStatuses();
     }
 

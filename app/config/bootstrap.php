@@ -2,7 +2,7 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-$app = new Sammy\Server\Application(
+$app = new Griff\Server\Application(
     $settingsFile = __DIR__.'/../config/settings.json'
 );
 
@@ -15,4 +15,4 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => $viewsPaths,
 ));
 
-$app->modules = Sammy\Server\Modules::get();
+$app->modules = Griff\Server\Modules::get();

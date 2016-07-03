@@ -1,6 +1,6 @@
 <?php 
 
-namespace Sammy\Server;
+namespace Griff\Server;
 
 class Modules
 {
@@ -10,7 +10,7 @@ class Modules
         $modules = array();
 
         foreach ($app->getEnabledModules() as $module) {
-            $moduleController = __namespace__.'\\'.$module.'Controller';
+            $moduleController = __namespace__.'\\'.$module.'\\Controllers\\'.$module.'Controller';
             $moduleController = new $moduleController;
             $modules[$module] = $moduleController->render();
         }

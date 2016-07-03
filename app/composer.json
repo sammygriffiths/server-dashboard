@@ -7,14 +7,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Sammy\\Server\\": [
+            "Griff\\Server\\": [
                 "controllers", 
                 "models", 
-                "modules/service-status/controllers", 
-                "modules/service-status/models", 
                 "helpers", 
-                "core"
-            ]   
+                "core",
+                "modules"
+            ]
         }
     }
 }
