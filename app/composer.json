@@ -10,8 +10,8 @@
             "Sammy\\Server\\": [
                 "controllers", 
                 "models", 
-                "modules/service-availability/controllers", 
-                "modules/service-availability/models", 
+                "modules/service-status/controllers", 
+                "modules/service-status/models", 
                 "helpers", 
                 "core"
             ]   

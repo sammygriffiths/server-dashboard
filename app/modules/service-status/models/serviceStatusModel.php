@@ -4,7 +4,7 @@ namespace Sammy\Server;
 
 use JJG\Ping;
 
-class ServiceAvailabilityModel extends CoreModuleModel
+class ServiceStatusModel extends CoreModuleModel
 {
 
     private $ping;
@@ -14,7 +14,7 @@ class ServiceAvailabilityModel extends CoreModuleModel
         $this->ping = new Ping($this->app->settings->get('ip'));
     }
 
-    public function checkAvailability($service) {
+    public function checkStatus($service) {
         $serviceHost = (empty($this->app->settings->service($service, 'ip'))) ? $this->app->settings->get('ip') : $this->app->settings->service($service, 'ip');
         $servicePort = $this->app->settings->service($service, 'port');
 
@@ -26,14 +26,14 @@ class ServiceAvailabilityModel extends CoreModuleModel
         return (false === $result) ? false : true;
     }
 
-    public function getAvailabilities() {
+    public function getStatuses() {
         $serviceSettings = $this->app->settings->all()->services;
-        $availabilities = array();
+        $statuses = array();
 
         foreach ($serviceSettings as $service => $settings) {
-            $availabilities[$service] = $this->checkAvailability($service);
+            $statuses[$service] = $this->checkStatus($service);
         }
 
-        return $availabilities;
+        return $statuses;
     }
 }
