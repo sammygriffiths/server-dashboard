@@ -6,6 +6,7 @@ class Application extends \Silex\Application
 {
 
     public $settings;
+    public $modules;
 
     public function __construct($settingsFile, array $values = array()) {
         parent::__construct($values);
@@ -14,6 +15,18 @@ class Application extends \Silex\Application
     }
 
     public function moduleEnabled($module) {
-        return $this->settings->modules->$module;
+        return $this->settings->get('modules')->$module;
+    }
+
+    public function getEnabledModules() {
+        $enabledModules = array();
+
+        foreach ($this->settings->get('modules') as $module => $enabled) {
+            if ($enabled) {
+                $enabledModules[] = $module;
+            }
+        }
+
+        return $enabledModules;
     }
 }

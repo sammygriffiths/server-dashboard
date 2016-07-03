@@ -15,3 +15,4 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => $viewsPaths,
 ));
 
+$app->modules = Sammy\Server\Modules::get();

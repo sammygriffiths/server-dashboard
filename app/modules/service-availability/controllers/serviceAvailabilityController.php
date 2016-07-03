@@ -6,25 +6,18 @@ class ServiceAvailabilityController extends CoreModuleController
 {
 
     private $model;
+    private $availabilities;
 
     public function __construct() {
         parent::__construct();
         $this->model = new ServiceAvailabilityModel;
+        $this->availabilities = $this->model->getAvailabilities();
     }
 
-    public function getAvailabilities() {
-        $serviceSettings = $this->app->settings->all()->services;
-        $availabilities = array();
-
-        foreach ($serviceSettings as $service => $settings) {
-            if ($this->model->checkAvailability($service)) {
-                $availabilities[$service] = true;
-            } else {
-                $availabilities[$service] = false;
-            }
-        }
-
-        return $availabilities;
+    public function render() {
+        return $this->app['twig']->render('serviceAvailability.html.twig', array(
+            'availabilities' => $this->availabilities
+        ));
     }
 
 }

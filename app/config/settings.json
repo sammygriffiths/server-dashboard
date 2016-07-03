@@ -7,6 +7,6 @@
         }
     },
     "modules": {
-        "service-availability": true
+        "ServiceAvailability": true
     }
 }

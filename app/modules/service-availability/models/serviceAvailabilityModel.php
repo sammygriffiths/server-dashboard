@@ -25,4 +25,15 @@ class ServiceAvailabilityModel extends CoreModuleModel
 
         return (false === $result) ? false : true;
     }
+
+    public function getAvailabilities() {
+        $serviceSettings = $this->app->settings->all()->services;
+        $availabilities = array();
+
+        foreach ($serviceSettings as $service => $settings) {
+            $availabilities[$service] = $this->checkAvailability($service);
+        }
+
+        return $availabilities;
+    }
 }
