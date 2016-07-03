@@ -5,12 +5,10 @@ namespace Griff\Server\ServiceStatus\Controllers;
 class ServiceStatusController extends \Griff\Server\CoreModuleController
 {
 
-    // private $model;
     private $statuses;
 
     public function __construct() {
         parent::__construct();
-        // $this->model = new \Griff\Server\ServiceStatus\Models\ServiceStatusModel;
         $this->statuses = $this->model->getStatuses();
     }
 

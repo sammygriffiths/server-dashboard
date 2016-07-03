@@ -11,11 +11,11 @@ class ServiceStatusModel extends \Griff\Server\CoreModuleModel
 
     public function __construct() {
         parent::__construct();
-        $this->ping = new Ping($this->app->settings->get('ip'));
+        $this->ping = new Ping($this->app->settings->get('domain'));
     }
 
     public function checkStatus($service) {
-        $serviceHost = (empty($this->app->settings->service($service, 'ip'))) ? $this->app->settings->get('ip') : $this->app->settings->service($service, 'ip');
+        $serviceHost = (empty($this->app->settings->service($service, 'domain'))) ? $this->app->settings->get('domain') : $this->app->settings->service($service, 'ip');
         $servicePort = $this->app->settings->service($service, 'port');
 
         $this->ping->setHost($serviceHost);
