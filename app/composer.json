@@ -1,0 +1,20 @@
+{
+    "require": {
+        "silex/silex": "~2.0",
+        "twig/twig": "^1.24",
+        "symfony/twig-bridge": "^3.1",
+        "geerlingguy/ping": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sammy\\Server\\": [
+                "controllers", 
+                "models", 
+                "modules/service-availability/controllers", 
+                "modules/service-availability/models", 
+                "helpers", 
+                "core"
+            ]   
+        }
+    }
+}
