@@ -15,25 +15,32 @@ class ServiceStatusModel extends \Griff\Server\CoreModuleModel
     }
 
     public function checkStatus($service) {
-        $serviceHost = (empty($this->app->settings->service($service, 'domain'))) ? $this->app->settings->get('domain') : $this->app->settings->service($service, 'ip');
+        $serviceHost = null !== $this->app->settings->service($service, 'domain') ? $this->app->settings->get('domain') : $this->app->settings->service($service, 'domain');
         $servicePort = $this->app->settings->service($service, 'port');
 
         $this->ping->setHost($serviceHost);
-        $this->ping->setPort($servicePort);
+        if (false === empty($servicePort)) {
+            $this->ping->setPort($servicePort);
+        }
 
         $result = $this->ping->ping('fsockopen');
 
         return (false === $result) ? false : true;
     }
 
-    public function getStatuses() {
+    public function getServices() {
         $serviceSettings = $this->app->settings->all()->services;
-        $statuses = array();
+        $services = array();
 
         foreach ($serviceSettings as $service => $settings) {
-            $statuses[$service] = $this->checkStatus($service);
+            $services[$service] = $settings;
+            $services[$service]->live = $this->checkStatus($service);
+
+            if (false === isset($services[$service]->domain)) {
+                $services[$service]->domain = $this->app->settings->get('domain');
+            }
         }
 
-        return $statuses;
+        return $services;
     }
 }

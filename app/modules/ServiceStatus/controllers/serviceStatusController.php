@@ -9,12 +9,12 @@ class ServiceStatusController extends \Griff\Server\CoreModuleController
 
     public function __construct() {
         parent::__construct();
-        $this->statuses = $this->model->getStatuses();
+        $this->services = $this->model->getServices();
     }
 
     public function render() {
         return $this->app['twig']->render('serviceStatus.html.twig', array(
-            'statuses' => $this->statuses
+            'services' => $this->services
         ));
     }
 
