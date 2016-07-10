@@ -1,9 +1,9 @@
 {
-    "domain": "86.4.80.30",
+    "domain": "",
     "services": {
         "plex": {
             "domain": "",
-            "port": "24412"
+            "port" : ""
         }
     },
     "modules": {
