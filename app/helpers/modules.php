@@ -9,10 +9,14 @@ class Modules
 
         $modules = array();
 
-        foreach ($app->getEnabledModules() as $module) {
-            $moduleController = __namespace__.'\\'.$module.'\\Controllers\\'.$module.'Controller';
-            $moduleController = new $moduleController;
-            $modules[$module] = $moduleController->render();
+        foreach ($app->modules as $module => $enabled) {
+            if ($enabled) {
+                $moduleController = __namespace__.'\\'.$module.'\\Controllers\\'.$module.'Controller';
+                $moduleController = new $moduleController;
+                $modules[$module] = $moduleController->render();
+            } else {
+                $modules[$module] = null;
+            }
         }
 
         return $modules;
