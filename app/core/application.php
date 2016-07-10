@@ -12,6 +12,7 @@ class Application extends \Silex\Application
         parent::__construct($values);
 
         $this->settings = new Settings($settingsFile);
+        $this->modules  = $this->settings->get('modules');
     }
 
     public function moduleEnabled($module) {
